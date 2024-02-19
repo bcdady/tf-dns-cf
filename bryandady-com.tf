@@ -20,13 +20,13 @@ module "bryandady-com" {
     },
     {
       name    = "@"
-      value   = "bcdady.pages.dev"
+      value   = "bcdady-github-io.pages.dev"
       proxied = true
       type    = "CNAME"
     },
     {
       name    = "www"
-      value   = "bcdady.pages.dev"
+      value   = "bcdady-github-io.pages.dev"
       proxied = true
       type    = "CNAME"
     }
