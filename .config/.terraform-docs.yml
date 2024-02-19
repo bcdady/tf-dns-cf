@@ -1,0 +1,10 @@
+---
+version: ">= 0.16.0"
+
+formatter: markdown
+
+settings:
+  hide-empty: true
+
+output:
+  file: README.md
