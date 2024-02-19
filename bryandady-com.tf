@@ -7,16 +7,16 @@ module "bryandady-com" {
 
   records = [
     {
-      name    = "@"
-      ttl     = 300
-      type    = "TXT"
-      value   = "v=spf1 -all"
+      name  = "@"
+      ttl   = 300
+      type  = "TXT"
+      value = "v=spf1 -all"
     },
     {
-      name    = "_dmarc"
-      ttl     = 300
-      type    = "TXT"
-      value   = local.dmarc_quarantine
+      name  = "_dmarc"
+      ttl   = 300
+      type  = "TXT"
+      value = local.dmarc_quarantine
     },
     {
       name    = "@"
