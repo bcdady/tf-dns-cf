@@ -1,4 +1,4 @@
-module "bryandady-com" {
+module "bryandady-me" {
   source  = "cloudposse/zone/cloudflare"
   version = "0.5.1"
 
