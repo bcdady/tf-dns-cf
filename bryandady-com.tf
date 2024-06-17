@@ -1,6 +1,6 @@
 module "bryandady-com" {
   source  = "cloudposse/zone/cloudflare"
-  version = "0.5.1"
+  version = "1.0.0"
 
   account_id = local.account_id
   zone       = "bryandady.com"
