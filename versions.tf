@@ -4,11 +4,11 @@ terraform {
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = "~> 5.2"
+      version = "~> 5.3"
     }
     time = {
       source  = "hashicorp/time"
-      version = "~> 0.8"
+      version = "~> 0.13"
     }
   }
 }
