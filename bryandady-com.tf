@@ -1,9 +1,8 @@
 module "bryandady-com" {
-  source  = "cloudposse/zone/cloudflare"
-  version = "~> 1.0"
+  source = "./modules/zone"
 
   account_id = local.account_id
-  zone       = "bryandady.com"
+  zone_name  = "bryandady.com"
 
   records = [
     {
@@ -31,6 +30,4 @@ module "bryandady-com" {
       type    = "CNAME"
     }
   ]
-
-  context = module.this.context
 }
