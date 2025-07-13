@@ -34,5 +34,5 @@ output "name_servers" {
 
 output "verification_key" {
   description = "Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`."
-  value       = join("", cloudflare_zone.default[*].verification_key)
+  value       = try(join("", cloudflare_zone.default[*].verification_key), null)
 }
