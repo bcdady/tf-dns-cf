@@ -5,7 +5,7 @@ locals {
   zone_id         = local.zone_enabled ? join("", cloudflare_zone.default[*].id) : (local.zone_exists ? data.cloudflare_zones.default[0].result[0].id : null)
   records = local.records_enabled ? {
     for index, record in var.records :
-    try(record.key, format("%s-%s-%s", record.name, record.type, record.content)) => record
+    try(record.key, format("%s-%s-%d", record.name, record.type, index)) => record
   } : {}
 }
 
