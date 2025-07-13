@@ -1,13 +1,13 @@
-output "id" {
+output "zone_id" {
   description = "The zone ID."
   value       = try(local.zone_id, null)
 }
 
-output "record_hostnames_to_ids" {
-  description = "A map of the zone record hostnames to IDs."
+output "record_names_to_ids" {
+  description = "A map of the zone record names to IDs."
   value = {
     for record in cloudflare_dns_record.default :
-    record.hostname => record.id...
+    record.name => record.id...
     if local.records_enabled
   }
 }
@@ -15,11 +15,6 @@ output "record_hostnames_to_ids" {
 output "vanity_name_servers" {
   description = "A list of Vanity Nameservers."
   value       = try(cloudflare_zone.default[*].vanity_name_servers, null)
-}
-
-output "meta_wildcard_proxiable" {
-  description = "Indicates whether wildcard DNS records can receive Cloudflare security and performance features."
-  value       = join("", cloudflare_zone.default[*].meta.wildcard_proxiable)
 }
 
 output "meta_phishing_detected" {
