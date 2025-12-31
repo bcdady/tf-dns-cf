@@ -11,7 +11,7 @@ variable "account_id" {
 variable "zone_enabled" {
   type        = bool
   description = "Whether to create a DNS zone. Otherwise, use existing."
-  default     = true
+  default     = false
 }
 
 variable "records" {
