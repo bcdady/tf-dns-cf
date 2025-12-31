@@ -4,37 +4,39 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+env:
+  TF_VAR_cf_api_token: ${{ secrets.TF_VAR_CF_API_TOKEN }}
 
 jobs:
   terraform:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: ~1.0
-          
+
       - name: Terraform Format
         run: terraform fmt -check -recursive
-        
+
       - name: Terraform Init
         run: terraform init
-        
+
       - name: Terraform Validate
         run: terraform validate
-        
+
       - name: Setup TFLint
         uses: terraform-linters/setup-tflint@v4
-        
+
       - name: TFLint
         run: |
           tflint --init
           tflint
-          
+
       - name: TFSec Security Scan
         uses: aquasecurity/tfsec-action@v1.0.3
-        
+
       - name: Checkov Security Scan
         uses: bridgecrewio/checkov-action@v12
         with:
