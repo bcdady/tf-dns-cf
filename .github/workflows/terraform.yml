@@ -13,14 +13,15 @@ jobs:
       pull-requests: write
     env:
       TF_VAR_cf_api_token: ${{ secrets.TF_VAR_CF_API_TOKEN }}
-      TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
     environment: production
     steps:
       - uses: actions/checkout@v4
 
       - uses: hashicorp/setup-terraform@v3
+        # https://github.com/marketplace/actions/hashicorp-setup-terraform#usage
         with:
           terraform_version: ~1.0
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Cache Terraform plugins
         uses: actions/cache@v4
@@ -53,17 +54,17 @@ jobs:
         with:
           script: |
             const output = `#### Terraform Plan 📖
-            
+
             <details><summary>Show Plan</summary>
-            
+
             \`\`\`terraform
             ${process.env.PLAN}
             \`\`\`
-            
+
             </details>
-            
+
             *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
-            
+
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
