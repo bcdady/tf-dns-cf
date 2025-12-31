@@ -6,6 +6,7 @@ on:
     branches: [main]
 env:
   TF_VAR_cf_api_token: ${{ secrets.TF_VAR_CF_API_TOKEN }}
+  TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
 
 jobs:
   terraform:
