@@ -1,0 +1,2 @@
+exclude:
+  - cloudflare-dns-record-proxied-for-security
